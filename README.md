@@ -1,7 +1,10 @@
 <div align="center">
 <h1> Mon vet-conseil </h1>
 <img src="https://badgen.net/badge/django/4.2.1/green?icon=pypi" alt="Django">
-<img src="https://badgen.net/badge/status/development/red?icon=github" alt="Python"> <br>
+<img src="https://badgen.net/badge/status/development/red?icon=github" alt="Python"><br>
+
+[![Django CI](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml/badge.svg)](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml)
+<br>
 Mini-projet universitaire 🎓 de création d'une API REST pour la gestion d'une clinique vétérinaire et services aux animaux domestiques.
 </div>
 
@@ -28,7 +31,7 @@ git clone https://github.com/<demander a votre chef de sous groupe>.git
 ``` git checkout <nom de la branche> ```, pour vérifier la branche sur laquelle vous êtes, utiliser la commande ``` git branch ```
 
 ### Prérequis
-- Python 3
+- Python 3.11
 
 ### Création d'un environnement virtuel
 On va créer un environnement virtuel pour isoler les dépendances de notre projet par rapport à celles de notre installation globale.
