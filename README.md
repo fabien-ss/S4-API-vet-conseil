@@ -1,10 +1,8 @@
 <div align="center">
 <h1> Mon vet-conseil </h1>
 <img src="https://badgen.net/badge/django/4.2.1/green?icon=pypi" alt="Django">
-<img src="https://badgen.net/badge/status/development/red?icon=github" alt="Python"><br>
-
-[![Django CI](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml/badge.svg)](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml)
-<br>
+<img src="https://badgen.net/badge/status/development/red?icon=github" alt="Python">
+<br> <br>
 Mini-projet universitaire 🎓 de création d'une API REST pour la gestion d'une clinique vétérinaire et services aux animaux domestiques.
 </div>
 
@@ -135,4 +133,6 @@ Tout problème rencontré doit être renseigné afin de pouvoir le corriger. <br
 Pour signaler un problème, il faut créer une `issue` sur github en donnant un titre et une description du problème rencontré.
 > N'oublier pas de mettre des labels sur votre `issue`
 
-###### Work smart not hard 😆!
+###### Worflow
+[![Django CI](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml/badge.svg)](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml)
+[![Bandit](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/bandit.yml/badge.svg)](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/bandit.yml)
