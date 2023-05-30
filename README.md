@@ -133,6 +133,6 @@ Tout problème rencontré doit être renseigné afin de pouvoir le corriger. <br
 Pour signaler un problème, il faut créer une `issue` sur github en donnant un titre et une description du problème rencontré.
 > N'oublier pas de mettre des labels sur votre `issue`
 
-###### Worflow
+###### Workflow
 [![Django CI](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml/badge.svg)](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/django.yml)
 [![Bandit](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/bandit.yml/badge.svg)](https://github.com/mendrika261/S4-API-vet-conseil/actions/workflows/bandit.yml)
