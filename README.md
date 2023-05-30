@@ -7,6 +7,7 @@ Mini-projet universitaire 🎓 de création d'une API REST pour la gestion d'une
 
 >Lisez attentivement ce document avant de commencer à travailler sur le projet. SVP 😀!
 
+
 ## Prise en main
 
 ### Pour les chefs de sous groupes uniquement !
@@ -20,6 +21,7 @@ travailler sur une branche différente.
 ```
 git clone https://github.com/<demander a votre chef de sous groupe>.git
 ```
+
 
 ## Mise en marche
 > Soyez sûr d'être dans votre branche de travail avant toute modification
@@ -66,8 +68,11 @@ Créer une application pour votre sous groupe, et commencer à travailler dessus
 python manage.py startapp <nom de l'application>
 ```
 
+  
 ## Règles de gestion de version
+  
 ### Commit et push
+  
 #### Pour tout le monde
 - Vérifier que vous êtes bien sur votre branche de travail
 - Vérifier que vous avez bien `pull` la dernière version de la branche principale (afin d'éviter les conflits,
@@ -100,6 +105,7 @@ git pull origin <nom de la branche principale>
 ```
 - Merger votre branche en créant un `pull request` sur github <br>
 | Bien donner un titre et une description à votre `pull request` pour que le chef de sous groupe puisse comprendre ce que vous avez fait
+
 ### Gitignore
 Pour éviter de pusher des fichiers sensibles et inutiles, il faut ajouter les fichiers à ignorer dans le fichier `.gitignore` à commencer par `venv` et `.env`
 > Tenez à vérifier cela avant de pusher votre code
