@@ -2,7 +2,7 @@
 <h1> Mon vet-conseil </h1>
 <img src="https://badgen.net/badge/django/4.2.1/green?icon=pypi" alt="Django">
 <img src="https://badgen.net/badge/status/development/red?icon=github" alt="Python"> <br>
-Mini-projet universitaire 🎓 de création d'une API REST pour la gestion d'une clinique vétérinaire et servies aux animaux domestiques.
+Mini-projet universitaire 🎓 de création d'une API REST pour la gestion d'une clinique vétérinaire et services aux animaux domestiques.
 </div>
 
 >Lisez attentivement ce document avant de commencer à travailler sur le projet. SVP 😀!
@@ -18,7 +18,7 @@ travailler sur une branche différente.
 ### Pour tout le monde
 `Cloner` la branche principale du chef de sous groupe. 
 ```
-git clone
+git clone https://github.com/<demander a votre chef de sous groupe>.git
 ```
 
 ## Mise en marche
