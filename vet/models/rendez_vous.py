@@ -9,7 +9,7 @@ class Rendez_vous(models.Model):
     raison=models.CharField(max_length=255)
     temps=models.IntegerField()
     prix=models.FloatField()
-    patient=Patient.ForeignKey(Patient,on_delete=models.CASCADE)
+    patient=models.ForeignKey(Patient,on_delete=models.CASCADE)
     etat=models.IntegerField(default=0)
 
 

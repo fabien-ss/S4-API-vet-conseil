@@ -5,7 +5,8 @@ from vet.models.nourriture import Nourriture
 
 
 class Attribution(models.Model):
-    nourriture=Nourriture.ForeignKey(Nourriture,on_delete=models.CASCADE)
-    race=Race.Nourriture.ForeignKey(Race,on_delete=models.CASCADE)
-    debut_interval_poids=models.IntegerField()
-    fin_interval_poids=models.IntegerField()
+    nourriture=models.ForeignKey(Nourriture,on_delete=models.CASCADE)
+    id_race=models.ForeignKey(Race,on_delete=models.CASCADE)
+    poids_debut=models.IntegerField()
+    age_debut=models.IntegerField()
+    age_fin=models.IntegerField()
