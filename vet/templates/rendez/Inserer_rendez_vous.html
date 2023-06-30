@@ -1,0 +1,42 @@
+{% extends 'base/root_nav_sidebar.html'%}
+{%load static %}
+{% block title %}
+Insertion rendez vous
+{% endblock %}
+
+{% block content %}
+<main role="main" class="main-content">
+    <form action="{% url 'Inserer_rendez_vous' %}" method="post" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="client">Client:</label>
+            <select name="client" id="client" class="form-control">
+                {% for patient in patients %}
+                <option value="{{patient.id}}">{{patient.nom}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="motif">Motif:</label>
+            <input type="text" name="motif" id="motif" class="form-control" required>
+            <div class="invalid-feedback">Please provide a motif.</div>
+        </div>
+        <div class="form-group">
+            <label for="date_prise">Durée:</label>
+            <input type="number" name="duree" id="duree" class="form-control" required>
+            <div class="invalid-feedback">Pick a valide input.</div>
+        </div>
+        <div class="form-group">
+            <label for="date_prise">Date Prise:</label>
+            <input type="datetime-local" name="date_prise" id="date_prise" class="form-control" required>
+            <div class="invalid-feedback">Please select a date and time for the prise.</div>
+        </div>
+        <div class="form-group">
+            <label for="date_consultation">Date Consultation:</label>
+            <input type="datetime-local" name="date_consultation" id="date_consultation" class="form-control" required>
+            <div class="invalid-feedback">Please select a date and time for the consultation.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Inserer</button>
+    </form>
+    
+</main>
+{% endblock %}

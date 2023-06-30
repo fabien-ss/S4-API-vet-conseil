@@ -1,0 +1,22 @@
+{% extends 'base/root_nav_sidebar.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier rendez vous</title>
+</head>
+<body>
+    <form method="POST" action="{% url 'modifier_rendez_vous' rendez_vous.id %}">
+        {% csrf_token %}
+        <label for="raison">Raison :</label>
+        <input type="text" id="raison" name="motif" value="{{ rendez_vous.raison }}" required>
+        <br>
+        <label for="date">Date :</label>
+        <input type="datetime-local" id="date" name="date_prise" value="{{ rendez_vous.date|date:'Y-m-d\TH:i' }}" required>
+        <br>
+        <button type="submit">Modifier</button>
+    </form>  
+</body>
+</html>

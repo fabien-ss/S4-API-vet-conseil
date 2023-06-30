@@ -1,0 +1,27 @@
+{% extends 'base/root_nav_sidebar.html' %}
+
+{% block title %}
+Recherche date d'hébergement libre  par défaut
+{% endblock %}
+
+{% block content %}
+
+
+<main role="main" class="main-content">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12" style="text-align: center;">
+            <h1>Modifier le rendez vous du {{ rendez_vous.date_de_prise }} </h1>
+                <form action="{% url 'traitement_modification' %}" method="post">
+                    Date prise <input type="datetime-local" name="date_prise" class="form-control" value="{{ rendez_vous.date_de_prise }}">
+                    Raison <input type="text" class="form-control" name="raison" value={{ rendez_vous.raison }}>
+                    <input type="hidden" name="id" value="{{ rendez_vous.id }}">
+                    <input type="submit" class="form-control" name="modifier" value="modifier">
+                </form>
+            <a href="/vet/confirmation_suppression/{{ rendez_vous.id }}"><button class="btn btn-danger" type="submit" name="reponse" value="oui">Oui</button></a>
+            <a href="/vet/annulation_suppression"><button class="btn btn-primary" type="submit" name="reponse" value="non">Non</button></a>
+        </div> <!-- .col-12 ;-->
+      </div> <!-- .row -->
+    </div> <!-- .container-fluid -->
+</main> <!-- m-->
+{% endblock %}

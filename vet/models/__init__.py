@@ -1,3 +1,4 @@
+from .tarif_rendez_vous import Tarif_rendez_vous
 from .poste import Poste
 from .race import Race
 from .login import Login

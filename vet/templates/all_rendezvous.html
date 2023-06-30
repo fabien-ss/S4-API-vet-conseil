@@ -1,0 +1,183 @@
+{% extends 'base/root_nav_sidebar.html' %}
+
+{% block title %}
+Recherche date d'hébergement libre  par défaut
+{% endblock %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+<main role="main" class="main-content">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
+                  <div class="row mb-5 align-items-center my-3 ">
+                    <div class="col">
+                      <h2 class="page-title">Dates et heures libres entre {{ date_debut }} et {{ date_fin }}</h2>
+                    </div>
+                    <div class="col-auto">
+                      <button type="button" class="btn" data-toggle="modal" data-target=".modal-calendar"><span class="fe fe-filter fe-16 text-muted"></span></button>
+                    </div>
+                  </div>
+                <div class="row mt-5">
+                    <div id='calendar' class="col-8"></div>
+                    <div class=" col-4">
+
+{#     verification des dates libres        #}
+                      <form action="{% url "by_2_date" %}" method="post">
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                              <p class="mb-2"><strong>Recherche rendez vous</strong></p>
+                              <div class="">
+{#                                  date de debut #}
+                                    <div class="form-group ">
+                                    <label for="date-input1">debut</label>
+                                    <div class="input-group">
+                                        <input type="datetime-local" name="date_debut"
+                                            class="form-control"
+                                            id="date-input1"
+                                            value="04/24/2020" aria-describedby="button-addon2" required>
+                                        <div class="input-group-append">
+                                        <div class="input-group-text" id="button-addon-date"><span class="fe fe-calendar fe-16"></span></div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+    {#                                  date de fin #}
+
+                                    <div class="form-group ">
+                                    <label for="date-input1">fin</label>
+                                    <div class="input-group">
+                                        <input type="datetime-local" name="date_fin"
+                                            class="form-control"
+                                            id="date-input2"
+                                            value="04/24/2020" aria-describedby="button-addon2" required>
+                                        <div class="input-group-append">
+                                        <div class="input-group-text" id="button-addon-date"><span class="fe fe-calendar fe-16"></span></div>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" class="offset-9 btn btn-outline-primary right" value="vérifier">
+                                    </div>
+                                  <!-- </form> -->
+
+                              </div>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.card -->
+                        </form>
+                        <form action="{% url "by_1_date" %}" method="post">
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                              <div class="form-group ">
+                                <label for="date-input1">Recherche</label>
+                                <div class="input-group">
+                                    <input type="date" name="date"
+                                        class="form-control"
+                                        id="date-input2"
+                                        aria-describedby="button-addon2" required>
+                                    <div class="input-group-append">
+                                    <div class="input-group-text" id="button-addon-date"><span class="fe fe-calendar fe-16"></span></div>
+                                    </div>
+                                    
+                                </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" class="offset-9 btn btn-outline-primary right" value="vérifier">
+                                </div>
+                              <div class="">
+
+                                <ul class="list-group list-group-flush">
+                                    {% for rendez_vous in eventt %}
+                                        <li class="list-group-item">
+                                            De {{ rendez_vous.date_de_prise }}
+                                            à {{ rendez_vous.date_de_fin_rendez_vous }}<br>
+                                            <button class="offset-9 btn btn-primary right">Ajouter</button>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                              </div>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.card -->
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+      </main> <!-- m-->
+      <script>
+      // Get today's date
+          var today = new Date();
+
+          // Format the date as yyyy-mm-dd (the format expected by the date input field)
+          var formattedDate = today.toISOString().split('T')[0];
+
+          // Set the formatted date as the default value of the date input field
+          document.getElementById("date-input2").value = formattedDate;
+
+            var calendarEl = document.getElementById('calendar');
+              if (calendarEl) {
+              document.addEventListener('DOMContentLoaded', function() {
+                  
+                  var calendar = new FullCalendar.Calendar(calendarEl, {
+                  
+                  plugins: ['dayGrid', 'timeGrid', 'list', 'bootstrap'],
+                  timeZone: 'UTC',
+                  themeSystem: 'bootstrap',
+                  header: {
+                      left: 'today, prev, next',
+                      center: 'title',
+                      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                  },
+                  buttonIcons: {
+                      prev: 'fe-arrow-left',
+                      next: 'fe-arrow-right',
+                      prevYear: 'left-double-arrow',
+                      nextYear: 'right-double-arrow'
+                  },
+                  
+                  weekNumbers: true,
+                  eventLimit: true,
+
+                  events: [
+                    {% for rendez_vous in rendez_vous_entre_2_dates %}
+                      {   
+                          title: 'Libre',
+                          start: '{{ rendez_vous.date_de_prise|date:"Y-m-d H:i:s" }}',
+                          end: '{{ rendez_vous.date_fin|date:"Y-m-d H:i:s" }}',
+                          // Autres propriétés du rendez-vous à ajouter si nécessaire
+                      },
+                      {% endfor %}
+                  ],
+                  selectMirror: true,
+                  dateClick: function(info) {
+                    alert(info);
+                    /* $.ajax({
+                          url: "{% url 'date_selectionnee' %}",
+                          type: "POST",
+                          data: {
+                            // csrfmiddlewaretoken: "{{ csrf_token }}",
+                              date: info.dateStr
+                          },
+                          success: function(response) {
+                              console.log(response);
+                          },
+                          error: function(xhr) {
+                              console.log(xhr.responseText);
+                          }
+                      })*/
+                  },
+                  
+                  });
+
+                  calendar.render();
+              });
+              }
+
+    </script>
+{% endblock %}

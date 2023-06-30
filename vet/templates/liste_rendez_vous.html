@@ -1,0 +1,42 @@
+{% extends 'base/root_nav_sidebar.html' %}
+
+{% block title %}
+Liste rendez-vous
+{% endblock %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<main role="main" class="main-content">
+    <div class="container">
+        <h1>Liste des rendez-vous</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Raison</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rendez_vous in rendez_vous_entre_2_dates %}
+                    <tr>
+                        <td>{{ rendez_vous.date_de_prise }}</td>
+                        <td>{{ rendez_vous.raison }}</td>
+                        <td>
+                            <a href="/vet/modifier_rendez_vous/{{ rendez_vous.id }}"><button class="btn btn-primary btn-sm">Modifier</button>
+                        </td>
+                        <td>
+                           <a href="/vet/supprimer_rendez_vous/{{ rendez_vous.id }}"><button class="btn btn-danger btn-sm">Supprimer</button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <!-- Ajoutez d'autres rendez-vous ici -->
+            </tbody>
+        </table>
+    </div>
+</main>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
