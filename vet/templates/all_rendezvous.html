@@ -147,7 +147,7 @@ Recherche date d'hébergement libre  par défaut
                   events: [
                     {% for rendez_vous in rendez_vous_entre_2_dates %}
                       {   
-                          title: 'Libre',
+                          title: '{{rendez_vous.patient.nom}}',
                           start: '{{ rendez_vous.date_de_prise|date:"Y-m-d H:i:s" }}',
                           end: '{{ rendez_vous.date_fin|date:"Y-m-d H:i:s" }}',
                           // Autres propriétés du rendez-vous à ajouter si nécessaire

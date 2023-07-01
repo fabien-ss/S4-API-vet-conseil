@@ -6,6 +6,9 @@ Insertion rendez vous
 
 {% block content %}
 <main role="main" class="main-content">
+    {% if date_de_prise  %}
+        Nouveau rendez-vous pour {{date_de_prise}}
+    {% endif %}
     <form action="{% url 'Inserer_rendez_vous' %}" method="post" class="needs-validation" novalidate>
         <div class="form-group">
             <label for="client">Client:</label>
@@ -17,25 +20,39 @@ Insertion rendez vous
         </div>
         <div class="form-group">
             <label for="motif">Motif:</label>
-            <input type="text" name="motif" id="motif" class="form-control" required>
+            <input type="text" name="raison" id="motif" class="form-control" required>
             <div class="invalid-feedback">Please provide a motif.</div>
         </div>
         <div class="form-group">
-            <label for="date_prise">Durée:</label>
+            <label for="date_prise">Durée (heure):</label>
             <input type="number" name="duree" id="duree" class="form-control" required>
             <div class="invalid-feedback">Pick a valide input.</div>
         </div>
-        <div class="form-group">
-            <label for="date_prise">Date Prise:</label>
-            <input type="datetime-local" name="date_prise" id="date_prise" class="form-control" required>
-            <div class="invalid-feedback">Please select a date and time for the prise.</div>
-        </div>
+
         <div class="form-group">
             <label for="date_consultation">Date Consultation:</label>
             <input type="datetime-local" name="date_consultation" id="date_consultation" class="form-control" required>
             <div class="invalid-feedback">Please select a date and time for the consultation.</div>
         </div>
+
+        <div class="form-group">
+            <label for="date_prise">Date Prise:</label>
+            <input type="datetime-local" name="date_prise" id="date_prise" class="form-control" 
+            {% if date_de_prise  %}
+                value = {{date_de_prise}}
+            {% endif %}
+            required>
+            <div class="invalid-feedback">Please select a date and time for the prise.</div>
+        </div>
+        
         <button type="submit" class="btn btn-primary">Inserer</button>
+        <br>
+        <br>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
     </form>
     
 </main>

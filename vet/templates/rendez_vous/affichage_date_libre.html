@@ -77,7 +77,7 @@ Recherche date d'hébergement libre  par défaut
                                         <li class="list-group-item">
                                             De {{ rendez_vous.date_de_prise }}
                                             à {{ rendez_vous.date_fin }}<br>
-                                            <button class="offset-9 btn btn-primary right">Ajouter</button>
+                                            <a href="/vet/Ajouter_a_ces_date/{{ rendez_vous.date_de_prise|date:'Y-m-d H:i:s' }}/{{ rendez_vous.date_fin|date:'Y-m-d H:i:s' }}"><button class="offset-9 btn btn-primary right">Ajouter</button></a>
                                         </li>
                                     {% endfor %}
                                 </ul>

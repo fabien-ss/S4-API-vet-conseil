@@ -19,4 +19,5 @@ urlpatterns = [
     path("date_selectionnee/",rendez_vous_view.get_rendez_vous_by_date, name="date_selectionnee"),
     path("Nouveau_rendez_vous", Inserer_rendez_vous.nouveau, name="Nouveau_rendez_vous"),
     path("Inserer_rendez_vous", Inserer_rendez_vous.Inserer_rendez_vous, name="Inserer_rendez_vous"),
+    path("Ajouter_a_ces_date/<str:date_de_prise>/<str:date_fin>/", Inserer_rendez_vous.ajouter_a_ces_date, name="ajouter_a_ces_date"),
 ]

@@ -10,17 +10,29 @@ Recherche date d'hébergement libre  par défaut
 <main role="main" class="main-content">
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-12" style="text-align: center;">
+        <div class="col-12">
             <h1>Modifier le rendez vous du {{ rendez_vous.date_de_prise }} </h1>
-                <form action="{% url 'traitement_modification' %}" method="post">
-                    Date prise <input type="datetime-local" name="date_prise" class="form-control" value="{{ rendez_vous.date_de_prise }}">
-                    Raison <input type="text" class="form-control" name="raison" value={{ rendez_vous.raison }}>
+                <form action="{% url 'traitement_modification' %}" method="post" class="needs-validation" novalidate>
+                  <div class="form-group">
+                      <label for="date_prise">Date Prise:</label>
+                      <input type="datetime-local" name="date_prise" class="form-control" value="{{ rendez_vous.date_de_prise }}" required>
+                      <div class="invalid-feedback">Please select a date and time for the prise.</div>
+                  </div>
+                  <div class="form-group">
+                      <label for="motif">Motif:</label>
+                      <input type="text" class="form-control" name="raison" value={{ rendez_vous.raison }} required>
+                      <div class="invalid-feedback">Please provide a motif.</div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="motif">Durée:</label>
+                      <input type="text" class="form-control" name="duree" value={{ rendez_vous.duree }} required>
+                      <div class="invalid-feedback">Asio motif.</div>
+                  </div>
                     <input type="hidden" name="id" value="{{ rendez_vous.id }}">
-                    <input type="submit" class="form-control" name="modifier" value="modifier">
+                    <input type="submit" class="btn btn-primary" name="modifier" value="modifier">
                 </form>
-            <a href="/vet/confirmation_suppression/{{ rendez_vous.id }}"><button class="btn btn-danger" type="submit" name="reponse" value="oui">Oui</button></a>
-            <a href="/vet/annulation_suppression"><button class="btn btn-primary" type="submit" name="reponse" value="non">Non</button></a>
-        </div> <!-- .col-12 ;-->
+            </div> <!-- .col-12 ;-->
       </div> <!-- .row -->
     </div> <!-- .container-fluid -->
 </main> <!-- m-->
