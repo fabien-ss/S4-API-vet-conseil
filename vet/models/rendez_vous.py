@@ -46,7 +46,7 @@ class Rendez_vous(models.Model):
 
     def recherche_date_libre(self, date_debut, date_fin):
         date_occupées = Rendez_vous.objects.filter(
-            date_de_prise__range=(date_debut, date_fin)
+            date_de_prise__range=(date_debut, date_fin), etat = 0
         )
         return date_occupées
     
@@ -108,25 +108,27 @@ class Rendez_vous(models.Model):
         rendez_vous = Rendez_vous.objects.get(id=id_rendez_vous)
         return rendez_vous
 
-    def tous(self):
-        print(Rendez_vous.objects.all())
-
     def rendez_vous_entre_dates(self, date_debut, date_fin):
-        rendez_vous = Rendez_vous.objects.filter(date_de_prise__range=(date_debut, date_fin))
+        rendez_vous = Rendez_vous.objects.filter(date_de_prise__range=(date_debut, date_fin), etat = 0)
         return rendez_vous    
 
     def get_all_rendezvous(self):
-        return Rendez_vous.objects.all()
+        return Rendez_vous.objects.filter(etat = 0)
     
     def get_all_rendez_vous_by_date(self, date):
-        return Rendez_vous.objects.filter(date_de_prise__date=date)
+        return Rendez_vous.objects.filter(date_de_prise__date=date, etat = 0)
 
     def rendez_vous_entre_2_dates(self, date_debut, date_fin):
-        return Rendez_vous.objects.filter(date_de_prise__range=(date_debut, date_fin))
+        return Rendez_vous.objects.filter(date_de_prise__range=(date_debut, date_fin), etat = 0)
 
     def check_date(self):
-        all_rendezvous_dates = Rendez_vous.objects.filter(date_de_prise__range=(self.date_de_prise, self.date_fin))
-        all_rendezvous_dates2 = Rendez_vous.objects.filter(date_fin__range=(self.date_de_prise, self.date_fin))
-        if len(all_rendezvous_dates) > 0 or len(all_rendezvous_dates2) > 0:
+
+        all_rendezvous_dates = Rendez_vous.objects.filter(
+            Q(date_de_prise__range=(self.date_de_prise, self.date_fin)) |
+            Q(date_fin__range=(self.date_de_prise, self.date_fin)),
+            Q(etat = 0)
+        )
+
+        if all_rendezvous_dates.exists():
             raise ValidationError("Date déjà occupée")
         self.save()

@@ -34,7 +34,8 @@ def supprimer_rendez_vous(request, id_rendez_vous):
 def confirmation_suppression(request, id_rendez_vous):
     rendez_vous = Rendez_vous()
     rendez_vous = rendez_vous.rendez_vous_à_supprimer(id_rendez_vous)
-    rendez_vous.delete()
+    rendez_vous.etat = 1
+    rendez_vous.save()
     return redirect("/vet/")
 
 def rendez_vous_entre_deux_dates(request):
